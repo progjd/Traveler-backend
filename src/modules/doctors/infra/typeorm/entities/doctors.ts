@@ -4,6 +4,7 @@ import { Entity,
     JoinColumn, ManyToOne,
     CreateDateColumn,
     UpdateDateColumn,
+    ManyToMany,
        } from 'typeorm';
 import Specialties from '@modules/specialties/infra/typeorm/entities/specialties';
 
@@ -15,7 +16,7 @@ class Doctor {
 	@Column()
 	name: string;
 
-  @ManyToOne(() => Specialties, specialties => specialties.doctor, { eager: true })
+  @ManyToMany(() => Specialties, specialties => specialties.doctor, { eager: true })
 	@JoinColumn({ name: 'specialty_id' })
 	specialty: Specialties;
 

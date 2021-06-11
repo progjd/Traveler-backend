@@ -6,7 +6,6 @@ import { inject, injectable } from 'tsyringe';
 
 interface IRequest {
 	name: string;
-
 	}
 
 @injectable()

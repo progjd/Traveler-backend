@@ -7,7 +7,7 @@ import UpdateDoctorService from '@modules/doctors/services/UpdateDoctorService';
 import DeleteDoctorService from '@modules/doctors/services/DeleteDoctorService';
 import ShowAllDoctorService from '@modules/doctors/services/ShowAllDoctorService';
 
-export default class DoctorController{
+export default class DoctorsController{
 
   public async index(request: Request, response: Response): Promise<Response> {
     const showAllDoctorService = container.resolve(ShowAllDoctorService);

@@ -4,6 +4,7 @@ import doctorsRouter from '@modules/doctors/infra/http/routes/doctors.routes';
 import specialtiesRouter from '@modules/specialties/infra/http/routes/specialties.routes';
 
 
+
 const routes = Router();
 
 routes.use('/doctors', doctorsRouter);
