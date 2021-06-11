@@ -1,25 +1,29 @@
 {
-	"name": "traveler-backend",
+	"name": "test-cad-doctor-backend",
 	"version": "1.0.0",
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
 		"build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
-		"dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/server.ts",
+		"dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/infra/http/server.ts",
 		"test": "jest",
 		"start": "ts-node src/shared/infra/http/server.ts",
 		"typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js"
 	},
 	"dependencies": {
+		"@types/node": "^15.12.2",
+		"celebrate": "^14.0.0",
 		"class-transformer": "^0.4.0",
 		"cors": "^2.8.5",
 		"express": "^4.17.1",
 		"express-async-errors": "^3.1.1",
+		"install": "^0.13.0",
 		"mongodb": "^3.6.5",
-		"mongoose": "^5.12.3",
+		"mongoose": "^5.12.13",
 		"multer": "^1.4.2",
 		"pg": "^8.5.1",
 		"reflect-metadata": "^0.1.13",
+		"tsyringe": "^4.5.0",
 		"typeorm": "^0.2.31",
 		"uuidv4": "^6.2.7"
 	},

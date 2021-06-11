@@ -6,15 +6,15 @@
    "port": 5434,
    "username": "postgres",
    "password": "docker",
-   "database": "traveler-postgres",
+   "database": "doctor-postgres",
    "entities": [
-      "./src/models/*.ts"
+      "./src/models/**/infra/typeorm/entities/*.ts"
     ],
    "migrations": [
-      "./src/database/migrations/*.ts"
+      "./src/shared/infra/typeorm/migrations/*.ts"
     ],
    "cli": {
-      "migrationsDir": "./src/database/migrations"
+      "migrationsDir": "./src/shared/infra/typeorm/migrations"
     }
   },
   {
