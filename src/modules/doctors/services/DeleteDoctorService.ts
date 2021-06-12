@@ -1,5 +1,3 @@
-import Doctors from '../infra/typeorm/entities/doctors';
-import { getRepository } from 'typeorm';
 import AppError from '@shared/errors/AppError';
 import { injectable, inject } from 'tsyringe';
 import IDoctorsRepository from '../repositories/IDoctorsRepository';

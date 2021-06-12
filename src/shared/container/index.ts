@@ -6,4 +6,4 @@ import ISpecialtiesRepository from '@modules/specialties/repositories/ISpecialti
 import SpecialtyRepository from '@modules/specialties/infra/typeorm/repositories/SpecialtyRepository';
 
 container.registerSingleton<IDoctorsRepository>('DoctorsRepository', DoctorsRepository);
-container.registerSingleton<ISpecialtiesRepository>('SpecialtyRepository', SpecialtyRepository);
+container.registerSingleton<ISpecialtiesRepository>('SpecialtiesRepository', SpecialtyRepository);

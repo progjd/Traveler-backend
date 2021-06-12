@@ -1,18 +1,11 @@
 import Doctors from '../infra/typeorm/entities/doctors';
 import IDoctorsRepository from '../repositories/IDoctorsRepository';
+import ICreateDoctorDTO from '@modules/doctors/dtos/ICreateDoctorDTO'
 import { injectable, inject } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 import axios from 'axios';
 
 
-interface IRequest {
-	name: string;
-	crm: string;
-	phone: string;
-	mobile_phone: string;
-	zip_code: string;
-  specialty_id: string;
-	}
 
 @injectable()
 class CreateDoctorService {
@@ -28,7 +21,7 @@ class CreateDoctorService {
     mobile_phone,
     zip_code,
     specialty_id,
-  }: IRequest): Promise<Doctors> {
+  }: ICreateDoctorDTO): Promise<Doctors> {
     if(name.length > 120){
       throw new AppError('Name  must contain characters')
     }if(crm.toString().length > 7){

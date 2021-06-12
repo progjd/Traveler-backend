@@ -1,6 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import Doctors from '../infra/typeorm/entities/doctors';
 import IDoctorsRepository from '../repositories/IDoctorsRepository';
+import ICreateDoctorDTO from '@modules/doctors/dtos/ICreateDoctorDTO'
 
 import AppError from '@shared/errors/AppError';
 
