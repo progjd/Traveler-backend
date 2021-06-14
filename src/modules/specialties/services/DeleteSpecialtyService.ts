@@ -10,7 +10,7 @@ interface Request {
 class DeleteSpecialtyService {
 
   constructor(
-    @inject('SpecialtiesRepository')
+    @inject('SpecialtyRepository')
     private specialtiesRepository: ISpecialtiesRepository,
   ){}
 

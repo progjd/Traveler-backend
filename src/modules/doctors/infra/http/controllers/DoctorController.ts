@@ -7,7 +7,7 @@ import UpdateDoctorService from '@modules/doctors/services/UpdateDoctorService';
 import DeleteDoctorService from '@modules/doctors/services/DeleteDoctorService';
 import ShowAllDoctorService from '@modules/doctors/services/ShowAllDoctorService';
 
-export default class DoctorsController{
+export default class DoctorController{
 
   public async index(request: Request, response: Response): Promise<Response> {
     const showAllDoctorService = container.resolve(ShowAllDoctorService);
@@ -40,16 +40,16 @@ export default class DoctorsController{
         zip_code,
         specialty_id,
       });
-      return response.json(classToClass(doctor));
+      return response.json(doctor);
 
   }
 
   public async update(request: Request, response: Response): Promise<Response> {
     const updateDoctorService = container.resolve(UpdateDoctorService);
 
-    const {doctor_id, specialty_id } = request.params;
+    const {doctor_id } = request.params;
 
-    const { name, crm, phone, mobile_phone, zip_code } = request.body;
+    const { name, crm, phone, mobile_phone, zip_code, specialty_id } = request.body;
 
     const doctor = await updateDoctorService.execute({
       doctor_id,
@@ -59,7 +59,7 @@ export default class DoctorsController{
       phone,
       mobile_phone,
       zip_code,
-    });
+      });
 
     return response.json(classToClass(doctor));
   }

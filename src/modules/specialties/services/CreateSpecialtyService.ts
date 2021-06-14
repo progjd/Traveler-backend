@@ -11,7 +11,7 @@ interface IRequest {
 @injectable()
 class CreateSpecialtyService {
   constructor(
-    @inject('SpecialtiesRepository')
+    @inject('SpecialtyRepository')
     private specialtiesRepository: ISpecialtiesRepository,
     ){}
 

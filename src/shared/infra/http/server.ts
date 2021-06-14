@@ -3,8 +3,6 @@ import 'dotenv/config';
 import express, { Request, Response, NextFunction } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
-import '@shared/infra/typeorm';
-import '@shared/container';
 import AppError from '@shared/errors/AppError';
 import uploadConfig from '@config/upload';
 import mongoose from 'mongoose';
@@ -12,6 +10,8 @@ import mongoose from 'mongoose';
 mongoose.connect('mongodb://127.0.0.1:27017/tmp', { useNewUrlParser: true, useUnifiedTopology: true });
 
 import routes from './routes';
+import '@shared/infra/typeorm';
+import '@shared/container';
 
 
 const app = express();

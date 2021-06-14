@@ -6,7 +6,7 @@ import Specialty from '../infra/typeorm/entities/specialties';
 @injectable()
 class ShowAllSpecialtyService {
   constructor(
-    @inject('SpecialtiesRepository')
+    @inject('SpecialtyRepository')
     private specialtiesRepository: ISpecialtiesRepository,
   ) {}
 

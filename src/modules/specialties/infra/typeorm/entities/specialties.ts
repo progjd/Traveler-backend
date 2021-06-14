@@ -6,6 +6,7 @@ import {
 	CreateDateColumn,
 	OneToMany,
   ManyToMany,
+  ManyToOne,
 } from 'typeorm';
 import Doctor from '@modules/doctors/infra/typeorm/entities/doctors';
 
@@ -17,7 +18,7 @@ class Specialties {
 	@Column()
 	name: string;
 
-	@ManyToMany(() => Doctor, doctors => doctors.specialty)
+	@OneToMany(() => Doctor, doctor => doctor.specialty)
 	doctor: Doctor;
 
 	@CreateDateColumn('')

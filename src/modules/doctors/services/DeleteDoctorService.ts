@@ -1,6 +1,6 @@
 import AppError from '@shared/errors/AppError';
 import { injectable, inject } from 'tsyringe';
-import IDoctorsRepository from '../repositories/IDoctorsRepository';
+import IDoctorRepository from '../repositories/IDoctorRepository';
 
 interface Request {
   doctor_id: string;
@@ -10,17 +10,21 @@ interface Request {
 class DeleteDoctorService {
 
   constructor(
-    @inject('DoctorsRepository')
-    private doctorsRepository: IDoctorsRepository,
+    @inject('DoctorRepository')
+    private doctorRepository: IDoctorRepository,
   ){}
-	public async execute({doctor_id}: Request): Promise<void> {
+	public async execute({ doctor_id }: Request): Promise<void> {
 
-		const doctors = await this.doctorsRepository.findById(doctor_id);
-		if (!doctors) {
-			throw new AppError('doctors does not exists');
-		}
-		await this.doctorsRepository.delete(doctor_id);
-	}
+    const doctor = await this.doctorRepository.findById(doctor_id);
+
+    if (!doctor) {
+      throw new AppError('Doctor does not exists');
+    }
+
+    await this.doctorRepository.delete(doctor_id);
+  }
 }
 
 export default DeleteDoctorService;
+
+

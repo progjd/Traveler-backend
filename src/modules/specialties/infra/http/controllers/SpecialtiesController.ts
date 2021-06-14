@@ -3,7 +3,18 @@ import { container } from 'tsyringe';
 import CreateSpecialtyService from '@modules/specialties/services/CreateSpecialtyService';
 import { classToClass } from 'class-transformer';
 import DeleteSpecialtyService from '@modules/specialties/services/DeleteSpecialtyService';
+import ShowAllSpecialtyService from '@modules/specialties/services/ShowAllSpecialtyService';
 export default class SpecialtiesController{
+
+
+  public async index(request: Request, response: Response): Promise<Response> {
+    const showAllSpecialtyService = container.resolve(ShowAllSpecialtyService);
+
+    const especialty = await showAllSpecialtyService.execute();
+
+    return response.json(classToClass(especialty));
+  }
+
   public async create(request: Request, response: Response): Promise<Response>{
     try {
 
@@ -18,8 +29,8 @@ export default class SpecialtiesController{
     }
   }
   public async delete(request: Request, response: Response): Promise<Response> {
-    const { specialty_id } = request.params;
     const deleteSpecialtyService = container.resolve(DeleteSpecialtyService);
+    const { specialty_id } = request.params;
 
     const specialty = await deleteSpecialtyService.execute({ specialty_id });
 

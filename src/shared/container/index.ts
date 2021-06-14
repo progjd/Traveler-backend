@@ -1,9 +1,9 @@
 import { container } from 'tsyringe';
 
-import IDoctorsRepository from '@modules/doctors/repositories/IDoctorsRepository';
-import DoctorsRepository from '@modules/doctors/infra/typeorm/repositories/DoctorRepository';
+import IDoctorRepository from '@modules/doctors/repositories/IDoctorRepository';
+import DoctorRepository from '@modules/doctors/infra/typeorm/repositories/DoctorRepository';
 import ISpecialtiesRepository from '@modules/specialties/repositories/ISpecialtiesRepository';
 import SpecialtyRepository from '@modules/specialties/infra/typeorm/repositories/SpecialtyRepository';
 
-container.registerSingleton<IDoctorsRepository>('DoctorsRepository', DoctorsRepository);
-container.registerSingleton<ISpecialtiesRepository>('SpecialtiesRepository', SpecialtyRepository);
+container.registerSingleton<IDoctorRepository>('DoctorRepository', DoctorRepository);
+container.registerSingleton<ISpecialtiesRepository>('SpecialtyRepository', SpecialtyRepository);

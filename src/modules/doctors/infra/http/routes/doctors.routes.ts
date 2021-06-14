@@ -3,14 +3,24 @@ import { celebrate, Joi, Segments } from 'celebrate';
 
 
 
-import DoctorsController from '../controllers/DoctorsController';
+import DoctorsController from '../controllers/DoctorController';
 
 const doctorsRouter = Router();
-const doctorsController = new DoctorsController();
+const doctorsController = new DoctorsController;
 
 doctorsRouter.get(
   '/',
   doctorsController.index,
+);
+
+doctorsRouter.get(
+  '/:order_id',
+  celebrate({
+    [Segments.PARAMS]: {
+      order_id: Joi.string().required(),
+    },
+  }),
+  doctorsController.show,
 );
 
 

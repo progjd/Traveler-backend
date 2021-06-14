@@ -40,7 +40,7 @@ class SpecialtyRepository implements ISpecialtiesRepository{
   public async delete(id: string): Promise<void> {
     const specialty = await this.ormRepository.findOne(id);
     if(specialty){
-     this.ormRepository.save(specialty);
+     this.ormRepository.remove(specialty);
     }
   }
 }

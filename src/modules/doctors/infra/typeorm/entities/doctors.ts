@@ -5,6 +5,7 @@ import { Entity,
     CreateDateColumn,
     UpdateDateColumn,
     ManyToMany,
+    OneToMany,
        } from 'typeorm';
 import Specialties from '@modules/specialties/infra/typeorm/entities/specialties';
 
@@ -14,11 +15,11 @@ class Doctor {
 	id: string;
 
 	@Column()
-	name: string;
+  name: string;
 
-  @ManyToMany(() => Specialties, specialties => specialties.doctor, { eager: true })
+  @ManyToOne(() => Specialties, specialties => specialties.doctor,  { eager: true })
 	@JoinColumn({ name: 'specialty_id' })
-	specialty: Specialties;
+	specialty: Specialties[];
 
   @Column()
   specialty_id: string;

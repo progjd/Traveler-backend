@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
-import Doctors from '../infra/typeorm/entities/doctors';
-import IDoctorsRepository from '../repositories/IDoctorsRepository';
-import ICreateDoctorDTO from '@modules/doctors/dtos/ICreateDoctorDTO'
+import Doctor from '../infra/typeorm/entities/doctors';
+import IDoctorRepository from '../repositories/IDoctorRepository';
+
 
 import AppError from '@shared/errors/AppError';
 
@@ -18,14 +18,14 @@ interface Request {
 @injectable()
 class UpdateDoctorService {
   constructor(
-    @inject('DoctorsRepository')
-    private doctorsRepository: IDoctorsRepository,
+    @inject('DoctorRepository')
+    private doctorRepository: IDoctorRepository,
   ){
 
   }
-	public async execute({ doctor_id, name, crm, phone, mobile_phone, zip_code, specialty_id }: Request): Promise<Doctors> {
+	public async execute({ doctor_id, name, crm, phone, mobile_phone, zip_code, specialty_id }: Request): Promise<Doctor> {
 
-    const doctor = await this.doctorsRepository.findById(doctor_id);
+    const doctor = await this.doctorRepository.findById(doctor_id);
     if(!doctor){
       throw new AppError('Doctor does not found');
     }
@@ -38,7 +38,7 @@ class UpdateDoctorService {
     specialty_id,
 
 
-		await this.doctorsRepository.save(doctor);
+		await this.doctorRepository.save(doctor);
 		return doctor;
 	}
 }

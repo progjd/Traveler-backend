@@ -1,10 +1,10 @@
 import { getRepository, Repository} from 'typeorm';
-import IDoctorsRepository from '@modules/doctors/repositories/IDoctorsRepository';
+import IDoctorRepository from '@modules/doctors/repositories/IDoctorRepository';
 import ICreateDoctorDTO from '@modules/doctors/dtos/ICreateDoctorDTO';
 import Doctor from '../entities/doctors';
 
 
-class DoctorRepository implements IDoctorsRepository{
+class DoctorRepository implements IDoctorRepository{
   private ormRepository: Repository<Doctor>
   constructor() {
     this.ormRepository = getRepository(Doctor);
@@ -47,7 +47,7 @@ class DoctorRepository implements IDoctorsRepository{
   public async delete(id: string): Promise<void> {
     const doctor = await this.ormRepository.findOne(id);
     if(doctor){
-     this.ormRepository.save(doctor);
+     this.ormRepository.remove(doctor);
     }
   }
 }

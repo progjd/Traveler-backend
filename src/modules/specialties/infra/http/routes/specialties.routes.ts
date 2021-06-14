@@ -9,9 +9,15 @@ import SpecialtiesController from '../controllers/SpecialtiesController';
 const specialtiesController = new SpecialtiesController();
 const specialtiesRouter = Router();
 
+specialtiesRouter.get(
+  '/',
+  specialtiesController.index,
+);
 
 
 specialtiesRouter.post('/', specialtiesController.create);
+
+
 
 specialtiesRouter.delete(
   '/:specialty_id',

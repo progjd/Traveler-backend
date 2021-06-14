@@ -1,20 +1,20 @@
 import { injectable, inject } from 'tsyringe';
 
-import IDoctorsRepository from '../repositories/IDoctorsRepository';
+import IDoctorRepository from '../repositories/IDoctorRepository';
 import Doctor from '../infra/typeorm/entities/doctors';
 
 @injectable()
-class ShowAllDoctorsService {
+class ShowAllDoctorService {
   constructor(
-    @inject('DoctorsRepository')
-    private doctorsRepository: IDoctorsRepository,
+    @inject('DoctorRepository')
+    private doctorRepository: IDoctorRepository,
   ) {}
 
   public async execute(): Promise<Doctor[]> {
-    const doctor = await this.doctorsRepository.findAll();
+    const doctor = await this.doctorRepository.findAll();
 
     return doctor;
   }
 }
 
-export default ShowAllDoctorsService;
+export default ShowAllDoctorService;
